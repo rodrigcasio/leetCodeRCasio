@@ -1,3 +1,6 @@
+#include <vector>
+#include <iostream>
+
 class Solution {
 public:
     int maximumWealth(vector<vector<int>>& accounts) {
@@ -13,6 +16,10 @@ public:
         return maxWealth;
     }
 };
+
+int main(){
+    std::vector<int> accounts;
+}
 
 /*
 

@@ -55,3 +55,103 @@ int main(){
 //    and shifting elements correclty.
 
 
+
+/*      Tries with first aproaches:
+===============================================
+    
+    1st try:
+
+    for(const int& num : arr){
+        if(num == 0){
+            int len = arr.size() - 1;
+            for(int i = len; i >= count; i--){
+                arr[i + 1] = arr[i];
+            }
+            arr[count] = 0;
+        }
+    count++;
+    }
+
+=============================
+
+    2nd try:
+
+    works for 1 zero, but not for more zeros, needs to be fixed;
+
+
+int main(){
+ 
+
+    std::vector<int> arr = {1, 0, 2, 3};
+    int value = 0;
+    int len = arr.size() - 1;   
+    std::vector<int> arr2;
+    std::vector<int> arr3;
+    for(int i = 0; i < arr.size(); i++){
+        if(arr[i] == 0){
+            value = arr[i];
+            for(const int& num : arr){
+                arr2.push_back(num);
+            }
+
+            for(int j = len; j >= i; j--){
+                arr2[j + 1] = arr2[j];
+            }
+        }
+    }
+ 
+
+=============================
+
+    3rd try:
+
+    std::vector<int> arr = {1, 0, 2, 3, 0, 7, 3};
+    int value = 0;
+    int len = arr.size() - 1;   
+    std::vector<int> arr2 = arr;
+    std::vector<int> arr3 = arr2;
+    for(int i = 0; i < arr.size(); i++){
+        if(arr[i] == 0){
+            value = arr[i];
+  //          for(int j = 0; j < len; j++){
+    //            arr2[j] = arr[j];
+      //      }
+
+            for(int j = len; j >= i; j--){
+                arr2[j + 1] = arr2[j];
+                
+            }
+        }
+    }
+
+=============================
+
+    4rd try! it works! but in leetCode it is showing me a runtime error..
+
+                        // [1, 0, 0, 2, 3, 0, 0, 4]        // expected output.
+    std::vector<int> arr = {1, 0, 2, 3, 0, 4, 5, 0};
+    int length = 0;
+
+    for(int i = 0; i < arr.size(); i++){
+        if(arr[i] == 0){
+            int numElement = (arr.size() - 1);
+            for(int j = numElement; j >= length; j--){
+                arr[j + 1] = arr[j];
+            }
+        // assign the empty space value 0
+        arr[i] = 0;
+        // make sure we jump the initial 0 found and moved in the iteration.
+        i++;
+        }
+    length++;
+    }
+
+
+    for(const int& num : arr){
+         std::cout << "- " << num << std::endl;
+    }
+
+*/
+
+
+

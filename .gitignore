@@ -1,0 +1,40 @@
+# Compiled Binaries & Build Outputs
+*.out
+*.exe
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+x64/
+x86/
+build/
+out/
+
+# Build Systems (CMake)
+CMakeCache.txt
+CMakeFiles/
+CMakeSettings.json
+Makefile
+cmake-build-debug/
+cmake-build-release/
+
+# IDEs & Editors (VS Code, VS, CLion, Xcode)
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+*.xcodeproj/
+*.xcworkspace/
+
+# OS Files
+.DS_Store
+Thumbs.db

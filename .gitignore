@@ -15,6 +15,9 @@ x64/
 x86/
 build/
 out/
+# Debugger Logs & History
+.gdb_history
+.*_history
 
 # Build Systems (CMake)
 CMakeCache.txt

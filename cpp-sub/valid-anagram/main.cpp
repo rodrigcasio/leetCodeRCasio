@@ -7,7 +7,7 @@
       // - Hash table 
       
       // what to do with the data:
-      // - . Create two hash tables
+      // - . Create a hash table
       //
       // - . Evaluate if both strings are equal size.
       //    i. if they are not equal we return false
@@ -16,18 +16,16 @@
       // - . iterate throught the letters of {s} string
       // - . place each letter of the {s} string into a hashtable
       // - . add 1 to the value of each key(letter) for this hash table
-      // - . (Same thing for the second hash table "seenT" but iterating through {t} 
-      //      string.)
       //
       //
-      // - . iterate through the letters of {s}
-      // - . evalate if lr key is found in hash Table "seenS"
-      //      i. if it is found, we evaluate the values of both same keys of
-      //         both hash Tables.
-      //         i. if they are not equal, we return false
+      // - . iterate throught the letters of {t} string
+      // - . subtract 1 to the value of each key(letter) in the hash table 
       //
-      // -    i. if not found the key [lr] in hashtable S.
-      //        ii. we return false.
+      // - . Iterate through the {s} string 
+      // - . evaluate the value in the hashtable at the key 
+      //     of the current [l] (letter of {s})
+      //      i. if the value does not correspond to 0 of the current key
+      //         in the hash table, we return false.
       
       // output:
       // - Return bool value if {t} is an anagram of {s}
@@ -44,15 +42,12 @@ public:
       }
 
       for (const char& letT : t) {
-        
+        seenS[letT] -= 1;
       }
       
-      // for (const char& lr : s) {
-      //   if (seenS[lr] != seenT[lr]) {
-      //    return false; 
-      //   }
-      //
-      // }
+      for (const char& l : s) {
+        if (seenS.at(l) != 0) return false;
+      }
       
       return true;
     }   

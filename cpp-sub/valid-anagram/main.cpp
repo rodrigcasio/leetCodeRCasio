@@ -20,13 +20,10 @@
       //
       // - . iterate throught the letters of {t} string
       // - . subtract 1 to the value of each key(letter) in the hash table 
+      // - . evaluate if the value of the key is less than zero.
+      //      i. if any value from any key is less than 0, that would not be a anagram
+      // - . Here we are explicitely subtracting every the value of each key.
       //
-      // - . Iterate through the {s} string 
-      // - . evaluate the value in the hashtable at the key 
-      //     of the current [l] (letter of {s})
-      //      i. if the value does not correspond to 0 of the current key
-      //         in the hash table, we return false.
-      
       // output:
       // - Return bool value if {t} is an anagram of {s}
 
@@ -43,10 +40,7 @@ public:
 
       for (const char& letT : t) {
         seenS[letT] -= 1;
-      }
-      
-      for (const char& l : s) {
-        if (seenS.at(l) != 0) return false;
+        if (seenS.at(letT) < 0) return false;
       }
       
       return true;

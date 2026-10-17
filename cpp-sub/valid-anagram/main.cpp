@@ -1,20 +1,33 @@
 #include <unordered_map>
 #include <iostream>
 
-      // input:  iterate through all the letters of string s
+      // input:  two strings {s} and {t}.
       
       // What DS/Algo to use
       // - Hash table 
       
       // what to do with the data:
-      // - . Create a hashtable
-      // - . declare an int named counter.
-      // - . iterate throught the letters of {s}
+      // - . Create two hash tables
+      //
+      // - . Evaluate if both strings are equal size.
+      //    i. if they are not equal we return false
+      //    ii. if they are equal we move on.
+      //
+      // - . iterate throught the letters of {s} string
       // - . place each letter of the {s} string into a hashtable
-      // - . 
-      // - . iterate through the letters of {t}
-      // -  i. if letter {t}[i] is found in the hashtable, it continues.
-      //    ii. if the letter is not found, we return false
+      // - . add 1 to the value of each key(letter) for this hash table
+      // - . (Same thing for the second hash table "seenT" but iterating through {t} 
+      //      string.)
+      //
+      //
+      // - . iterate through the letters of {s}
+      // - . evalate if lr key is found in hash Table "seenS"
+      //      i. if it is found, we evaluate the values of both same keys of
+      //         both hash Tables.
+      //         i. if they are not equal, we return false
+      //
+      // -    i. if not found the key [lr] in hashtable S.
+      //        ii. we return false.
       
       // output:
       // - Return bool value if {t} is an anagram of {s}
@@ -22,35 +35,106 @@
 class Solution {
 public:
     bool isAnagram(std::string s, std::string t) {
-      std::unordered_map<char, int> seen;
-      int counter = 0;
+      std::unordered_map<char, int> seenS;
 
-      for (const char& l : s) {
-        seen[l] = 0;
-        counter++;
+      if (s.length() != t.length()) return false;
+
+      for (const char& letS : s) {
+        seenS[letS] += 1;
       }
 
-      for (const char& letterT : t) {
-        if (seen.find(letterT) != seen.end()) {
-          counter--;
-        }
+      for (const char& letT : t) {
+        
       }
-
-      if (counter == 0) {
-        return true;
-      }
-
-      return false;
+      
+      // for (const char& lr : s) {
+      //   if (seenS[lr] != seenT[lr]) {
+      //    return false; 
+      //   }
+      //
+      // }
+      
+      return true;
     }   
 };
-
 
 int main () {
 
   Solution sol;
-  
-  bool res = sol.isAnagram();
+  std::string a = "hello";
+  std::string b = "ehllo";
+
+  bool res = sol.isAnagram(a, b);
   std::cout << "result: " <<  res << std::endl;
 
   return 0;
 }
+
+
+/*
+ *
+// class Solution {
+// public:
+//     bool isAnagram(std::string s, std::string t) {
+//       std::unordered_map<char, int> seenS;
+//       std::unordered_map<char, int> seenT;
+//
+//       if (s.length() != t.length()) return false;
+//
+//       for (std::size_t i = 0; i < seenS.size(); i++) {
+//         seenS[i] = 0;
+//
+//         for (std::size_t j = 0; j < seenT.size(); j++) {
+//           if (s[i] != t[j]) return false;
+//
+//           seenT[j] += 1;
+//         }
+//
+//         seenS[i] += 1;
+//       }
+//
+//       // for (const auto& w : seenS) {
+//       //   for (const auto& m : seenT) {
+//       //     if (w.second != m.second) return false;
+//       //   }
+//       // }
+//
+//       // for (size_t w = 0; w < s.size(); w++) {
+//       //   for (size_t g = 0; g < t.size(); g++) { 
+//       //     if (seenS[w] != seenT[w]) {
+//       //       return false;
+//       //     }
+//       //   }
+//       // }
+//
+//       return true;
+//     }
+//
+// };
+ *
+ *
+      std::unordered_map<char, int> seenS;
+      std::unordered_map<char, int> seenT;
+      int counter = 0;
+
+      for (const char& l : s) {
+        seenS[l] += 1;
+      }
+
+      for (const char& letterT : t) {
+        seenT[letterT] += 1;
+      }
+
+      for (const char& lr : s) {
+        if (seenS.find(lr) != seenS.end()) {
+
+          if (seenS[lr] != seenT[lr]) {
+           return false; 
+          }
+
+        }
+      }
+
+      return true;
+    }   
+*/

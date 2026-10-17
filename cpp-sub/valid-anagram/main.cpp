@@ -27,14 +27,11 @@ public:
 
       for (const char& l : s) {
         seen[l] = 0;
+        counter++;
       }
 
       for (const char& letterT : t) {
-        counter++;
-
         if (seen.find(letterT) != seen.end()) {
-          counter--;
-        } else {
           counter--;
         }
       }

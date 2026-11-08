@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <unordered_map>
 #include <iostream>
 
@@ -26,25 +27,33 @@
       //
       // output:
       // - Return bool value if {t} is an anagram of {s}
+// approach with no hashtables and only one array
+// input : 2 strings 
+//  1. intizialize an array with 26 slots, setting all of them to 0
+//  2. check if both strings have the same number of characters.
+//  3. setting up the index number with ('a' = 97) - ('letter' = n). and add 1 into that index slot.
+//  4. iterate through the {t} string, and subtract the value placed in the index counts['letter'] = 1;
+//     - Evaluate if subtracting the value of the slot with 1 is less than 0 return false
+//     - If it is 0 continues the loop to evaluate each result of the value holding the index [letter - 'a']
 
 class Solution {
 public:
     bool isAnagram(std::string s, std::string t) {
-      std::unordered_map<char, int> seenS;
-
+      
+      int counts[26] = {};
+      
       if (s.length() != t.length()) return false;
 
       for (const char& letS : s) {
-        seenS[letS] += 1;
+        counts[letS - 'a'] += 1;  // e.j. 'b'(98 value) - 'a'(97) = 1. 1 is the index
+      }
+      for (const char& letT : t) {
+        counts[letT - 'a'] -= 1;
+        if (counts[letT - 'a'] < 0) return false;
       }
 
-      for (const char& letT : t) {
-        seenS[letT] -= 1;
-        if (seenS.at(letT) < 0) return false;
-      }
-      
-      return true;
-    }   
+      return true;  
+    }
 };
 
 int main () {
@@ -58,6 +67,30 @@ int main () {
 
   return 0;
 }
+
+
+
+// // submission 3
+// class Solution {
+// public:
+//     bool isAnagram(std::string s, std::string t) {
+//       std::unordered_map<char, int> seenS;
+//
+//       if (s.length() != t.length()) return false;
+//
+//       for (const char& letS : s) {
+//         seenS[letS] += 1;
+//       }
+//
+//       for (const char& letT : t) {
+//         seenS[letT] -= 1;
+//         if (seenS.at(letT) < 0) return false;
+//       }
+//
+//       return true;
+//     }   
+// };
+//
 
 
 /*

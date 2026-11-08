@@ -27,7 +27,7 @@
       //
       // output:
       // - Return bool value if {t} is an anagram of {s}
-// aproach with no hashtables and only one array
+// approach with no hashtables and only one array
 // input : 2 strings 
 //  1. intizialize an array with 26 slots, setting all of them to 0
 //  2. check if both strings have the same number of characters.
